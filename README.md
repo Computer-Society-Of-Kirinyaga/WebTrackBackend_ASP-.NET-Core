@@ -47,6 +47,54 @@
 
 ### Difference Between ASP.NET Web API and ASP.NET Core Web API
  ![Ecommerce API Diagram](https://dotnettutorials.net/wp-content/uploads/2025/09/word-image-55469-8-1.png) 
+
+### HTTP (HyperText Transport Protocol)
+ - HTTP is the foundation of data communication on the web. It is a protocol that defines how messages are formatted and transmitted between clients (like web browsers or mobile apps) and servers (where websites and APIs are hosted).
+ - Example: If a webpage fails to load and displays a “404 Not Found” error, a developer who understands HTTP knows that the server cannot locate the requested resource. This makes it easier to fix the broken link or update the resource path.
+  #### How Client and Server Communicate Using HTTP?
+  ![Ecommerce API Diagram](https://dotnettutorials.net/wp-content/uploads/2025/09/word-image-55469-1-6-768x454.png)
+  - Example
+You open a shopping app on your phone and view a product.
+
+Your mobile app sends an HTTP Request to the server asking for product details.
+The server replies with an HTTP Response containing the product name, price, and images.
+The app then displays this information to you.
+  #### Key Components of an HTTP Request
+ An HTTP Request is the message sent by the client to the server asking for a resource or action. It consists of a request line, headers, an optional body, and sometimes query parameters in the URL 
+ - Request Line: the first line of an HTTP request and specifies to the server the exact action the client wants to perform. It includes three main components: the HTTP method, the request URL, and the HTTP version.
+   - Example: `GET /products/123 HTTP/1.1`
+     - `GET`: The HTTP method indicating that the client wants to retrieve data.
+     - `/products/123`: The request URL specifying the resource being requested (in this case, product with ID 123).
+     - `HTTP/1.1`: The version of the HTTP protocol being used.
+ - HTTP Methods: These are verbs that indicate the desired action to be performed on the resource. Common HTTP methods include:
+   - `GET`: Retrieve data from the server (e.g., get a list of products).
+   - `POST`: Send data to the server to create a new resource (e.g., add a new product).
+   - `PUT`: Update an existing resource on the server (e.g., update product details).
+   - `DELETE`: Remove a resource from the server (e.g., delete a product).
+   - `PATCH`: Partially update an existing resource (e.g., update product price).
+ - Request Headers: After the request line, the client usually sends one or more headers. These headers serve as additional instructions, providing more detailed descriptions of the request. Common headers include:
+   - `Content-Type`: Specifies the format of the data being sent in the request body (e.g., `application/json` for JSON data).
+   - `Authorization`: Contains credentials (like tokens) to authenticate the client with the server.
+   - `Accept`: Indicates the types of responses the client can handle (e.g., `application/json`).
+ - Request Body: Some HTTP requests (like `POST` and `PUT`) include a body that contains data being sent to the server. This body can be in various formats, such as JSON, XML, or form data. For example, when creating a new product, the request body might contain the product name, price, and description in JSON format.
+ - Query Parameters: These are optional key-value pairs appended to the URL after a question mark (`?`)which are part of the URL itself. They provide additional information to the server about the request. For example, in the URL `/products?category=electronics&sort=price_asc`, `category` and `sort` are query parameters that filter and sort the products.
+### Key Components of an HTTP Response 
+An HTTP response is the message sent from the Server back to the Client after processing a request. The response informs the client whether the request was successful or not and may also include the requested content or an error message. It consists of a status line, headers, and an optional body.
+ - Status Line: The first line of an HTTP response is the status line, which provides three key pieces of information: the HTTP version, a status code, and a reason phrase. For example: `HTTP/1.1 200 OK`
+   - `HTTP/1.1`: Indicates the version of the HTTP protocol being used.
+   - `200`: The status code indicating the result of the request (in this case, 200 means success).
+   - `OK`: A brief description of the status code (in this case, "OK" means the request was successful).
+ - Status Codes: These are three-digit numbers that indicate the outcome of the request. They are grouped into five categories:
+   - `1xx (Informational)`: Request received, continuing process (e.g., 100 Continue).
+   - `2xx (Success)`: The request was successfully received, understood, and accepted (e.g., 200 OK, 201 Created).
+   - `3xx (Redirection)`: Further action needs to be taken to complete the request (e.g., 301 Moved Permanently, 302 Found).
+   - `4xx (Client Error)`: The request contains bad syntax or cannot be fulfilled (e.g., 400 Bad Request, 401 Unauthorized, 404 Not Found).
+   - `5xx (Server Error)`: The server failed to fulfill a valid request (e.g., 500 Internal Server Error, 503 Service Unavailable).
+ - Response Headers: Following the status line, the server sends one or more headers that provide additional information about the response. Common headers include:
+   - `Content-Type`: Specifies the format of the data being sent in the response body (e.g., `application/json` for JSON data).
+   - `Content-Length`: Indicates the size of the response body in bytes.
+   - `Set-Cookie`: Used to send cookies from the server to the client for session management.
+ - Response Body: The response body contains the actual data being sent back to the client. This can be in various formats such as JSON, XML, HTML, or plain text. For example, when a client requests product details, the response body might contain a JSON object with product information like name, price, and description.~
 ---
 
 ## Status / Progress
