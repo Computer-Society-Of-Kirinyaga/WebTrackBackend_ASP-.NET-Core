@@ -97,8 +97,66 @@ An HTTP response is the message sent from the Server back to the Client after pr
  - Response Body: The response body contains the actual data being sent back to the client. This can be in various formats such as JSON, XML, HTML, or plain text. For example, when a client requests product details, the response body might contain a JSON object with product information like name, price, and description.~
 ---
 
+### Creating ASP.NET Core Web API Project
+1. **Install .NET SDK**: Ensure you have the .NET SDK installed on your machine. You can download it from the official [.NET website](https://dotnet.microsoft.com/download).
+2. **checkout the list of available templates**: Open a terminal or command prompt and run the following command to see the list of available project templates:
+   ```bash
+   dotnet new --list
+   ```
+3. **Create a New Project**: Open a terminal or command prompt and run the following command to create a new ASP.NET Core Web API project:
+   ```bash
+   dotnet new webapi -n EcommerceApi
+   cd EcommerceApi
+   ```
+4. **Build  the Project**: To build  the project, use the following commands:
+   ```bash
+   dotnet build
+   ```
+     ![Ecommerce API Diagram](https://dotnettutorials.net/wp-content/uploads/2021/04/word-image-14715-13.png)
+5. **Run the Project**: To run the project, use the following command:
+   ```bash
+    dotnet run
+    ```
+    ![Ecommerce API Diagram](https://dotnettutorials.net/wp-content/uploads/2021/04/word-image-14715-17.png)
+
+6. **Test the API using the .http file**: Create a `.http` file in the project root to test your API endpoints. For example:
+    ```http
+    ### Get all products
+    GET https://localhost:5001/api/products
+    Accept: application/json
+  
+    ### Get a product by ID
+    GET https://localhost:5001/api/products/1
+    Accept: application/json
+  
+    ### Create a new product
+    POST https://localhost:5001/api/products
+    Content-Type: application/json
+  
+    {
+        "name": "New Product",
+        "price": 19.99,
+        "description": "A description of the new product"
+    }
+  
+    ### Update a product
+    PUT https://localhost:5001/api/products/1
+    Content-Type: application/json
+  
+    {
+        "name": "Updated Product",
+        "price": 29.99,
+        "description": "An updated description of the product"
+    }
+  
+    ### Delete a product
+    DELETE https://localhost:5001/api/products/1
+    ```
+### Default ASP.NET Core Web API Project Structure in Visual Studio code
+
+
 ## Status / Progress
-- [ ] Project scaffolded (`dotnet new webapi`)
+- [x] Project scaffolded (`dotnet new webapi`)
 - [ ] Basic endpoints working
 - [ ] Database configured (EF Core)
 - [ ] Entities & migrations added
