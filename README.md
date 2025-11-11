@@ -153,6 +153,20 @@ An HTTP response is the message sent from the Server back to the Client after pr
     DELETE https://localhost:5001/api/products/1
     ```
 ### Default ASP.NET Core Web API Project Structure in Visual Studio code
+   **launchSettings.json**
+    - This file contains settings that are used when you run the application. It includes profiles for different environments (e.g., IIS Express, Project) and specifies the application URL and environment variables.
+   **Program.cs**
+    - This is the main entry point of the application. It configures and starts the web host, sets up services, middleware, and routing.
+   **Startup.cs**
+    - This class is responsible for configuring the application services and the request pipeline. It includes methods for setting up dependency injection, middleware, and routing.
+   **Controllers/WeatherForecastController.cs**
+    - This is a sample controller that demonstrates how to create API endpoints. It includes a GET endpoint that returns a list of weather forecasts.
+   **Properties/launchSettings.json**
+    - This file contains settings that are used when you run the application. It includes profiles for different environments (e.g., IIS Express, Project) and specifies the application URL and environment variables.
+   **appsettings.json**
+    - This file contains configuration settings for the application, such as connection strings, logging settings, and other application-specific settings.
+   **appsettings.Development.json**
+    - This file contains configuration settings for the application in the Development environment. It can override settings in appsettings.json.
 
 
 ## Status / Progress
