@@ -2,5 +2,44 @@
 
 GET {{api}}/api/customer
 
+###
+GET {{api}}/api/customers/1
 
 ###
+POST {{api}}/api/customers
+Content-Type: application/json
+
+{}
+
+###
+PUT {{api}}/api/customers/1
+Content-Type: application/json
+
+{}
+
+###
+DELETE {{api}}/api/customers/1
+
+###
+GET {{api}}/api/products
+
+###
+GET {{api}}/api/products/1
+
+###
+GET {{api}}/api/products/available
+
+###
+POST {{api}}/api/products
+Content-Type: application/json
+
+{}
+
+###
+PUT {{api}}/api/products/1
+Content-Type: application/json
+
+{}
+
+###
+DELETE {{api}}/api/products/1

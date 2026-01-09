@@ -14,6 +14,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseRouting();
 app.MapControllers();
+app.MapProductEndpoints();
 
 app.Run();
 
