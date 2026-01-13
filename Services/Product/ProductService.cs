@@ -1,3 +1,4 @@
+using Ecommerce.Api.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 public class ProductService :IProductService

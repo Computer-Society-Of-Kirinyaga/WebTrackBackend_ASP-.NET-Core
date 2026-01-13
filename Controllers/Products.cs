@@ -1,3 +1,4 @@
+using Ecommerce.Api.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,7 +6,7 @@ public static class ProductEndpoints
 {
     public static RouteGroupBuilder MapProductEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("api/Product");
+        var group = app.MapGroup("api/pexroducts");
 
         group.MapGet("/", (IProductService service) =>
         {

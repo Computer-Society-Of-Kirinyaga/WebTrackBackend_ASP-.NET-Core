@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zarrah\\Desktop\\projects\\Ecommerce.Api\\Ecommerce.Api.csproj": {}
+    "C:\\Users\\zarrah\\Desktop\\Ecommerce.Api\\Ecommerce.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zarrah\\Desktop\\projects\\Ecommerce.Api\\Ecommerce.Api.csproj": {
+    "C:\\Users\\zarrah\\Desktop\\Ecommerce.Api\\Ecommerce.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zarrah\\Desktop\\projects\\Ecommerce.Api\\Ecommerce.Api.csproj",
+        "projectUniqueName": "C:\\Users\\zarrah\\Desktop\\Ecommerce.Api\\Ecommerce.Api.csproj",
         "projectName": "Ecommerce.Api",
-        "projectPath": "C:\\Users\\zarrah\\Desktop\\projects\\Ecommerce.Api\\Ecommerce.Api.csproj",
+        "projectPath": "C:\\Users\\zarrah\\Desktop\\Ecommerce.Api\\Ecommerce.Api.csproj",
         "packagesPath": "C:\\Users\\zarrah\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zarrah\\Desktop\\projects\\Ecommerce.Api\\obj\\",
+        "outputPath": "C:\\Users\\zarrah\\Desktop\\Ecommerce.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zarrah\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -45,11 +45,21 @@
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.22, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.9, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
             }
           },
           "imports": [

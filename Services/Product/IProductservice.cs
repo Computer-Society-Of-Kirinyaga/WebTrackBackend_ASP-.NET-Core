@@ -1,3 +1,5 @@
+using Ecommerce.Api.Models;
+
 public interface IProductService
 {
     List<ProductDto> GetAllProducts();
