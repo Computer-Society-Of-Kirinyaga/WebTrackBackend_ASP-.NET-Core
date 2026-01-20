@@ -60,15 +60,15 @@ namespace Ecommerce.Api.Controllers
               new(ClaimTypes.Email, customer.Email) 
             };
             
-            var Mykey = configuration["Jwt: Key"];
+            var Mykey = configuration["Jwt:Key"];
             if (string.IsNullOrEmpty(Mykey)) throw new Exception("Jwt key is missing");
 
             var key = new SymmetricSecurityKey (Encoding.UTF8.GetBytes(Mykey));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: configuration["Jwt: Issuer"],
-                audience: configuration["Jwt: Audience"] ,
+                issuer: configuration["Jwt:Issuer"],
+                audience: configuration["Jwt:Audience"] ,
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(10),
                 signingCredentials: credentials
