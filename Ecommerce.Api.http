@@ -41,6 +41,27 @@ Content-Type: application/json
     "IsAvailable": true
 }
 
+
+###
+POST {{api}}/api/auth/register
+Content-Type: application/json
+
+{
+    "Email" : "cust@gmail.com",
+    "PasswordHash" : "1234"
+}
+
+
+###
+POST {{api}}/api/auth/login
+Content-Type: application/json
+
+{
+    "Email" : "cust@gmail.com",
+    "PasswordHash" : "1234"
+}
+
+
 ###
 PUT {{api}}/api/products/1
 Content-Type: application/json
