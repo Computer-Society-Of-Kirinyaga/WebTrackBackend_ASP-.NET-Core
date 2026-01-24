@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Cryptography;
 
 
 namespace Ecommerce.Api.Controllers
@@ -19,6 +20,7 @@ namespace Ecommerce.Api.Controllers
     {
         private readonly AppDbContext _context = context; 
         private readonly IConfiguration configuration = _configuration;
+        public record Req(string Token);
        
 
        [HttpPost("register")]
@@ -39,7 +41,7 @@ namespace Ecommerce.Api.Controllers
         } 
 
         [HttpPost("login")]
-        public async Task<ActionResult<Customer>> Login(AuthDto request)
+        public async Task<ActionResult<LogInDto>> Login(AuthDto request)
         {
             var FoundCustomer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == request.Email);
             if(FoundCustomer == null) return Unauthorized("invalid log in credentials");
@@ -48,11 +50,14 @@ namespace Ecommerce.Api.Controllers
             if (result == PasswordVerificationResult.Failed) return Unauthorized("invalid Password");
         
         //generate jwt token and return
-        var token =  GenerateJwt(FoundCustomer);
-        return Ok(token);
-
+        string accessToken =  GenerateJwt(FoundCustomer);
+        string refreshToken = GetRefreshtoken();
+        FoundCustomer.RefreshToken = refreshToken;
+        FoundCustomer.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+    await _context.SaveChangesAsync();
+    return new LogInDto() {AccessToken = accessToken, RefreshToken = refreshToken};
         }
-        public string GenerateJwt (Customer customer)
+        private string GenerateJwt (Customer customer)
         {
             var claims = new List<Claim>
             {
@@ -77,5 +82,28 @@ namespace Ecommerce.Api.Controllers
             return jwt;
         }
        
+       private static string GetRefreshtoken ()
+        {
+            var RandomNum = new byte[32];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(RandomNum);
+            return Convert.ToBase64String(RandomNum);
+        }
+    [HttpPost("refresh")]
+    public async Task<LogInDto> RefreshToken (Req token)
+        {
+           var foundToken = await _context.Customers.FirstOrDefaultAsync(r => r.RefreshToken == token.Token) ?? throw new Exception("invalid token");
+    
+           var customer = await _context.Customers.FirstOrDefaultAsync(r => r.Id == foundToken.Id) ?? throw new Exception("customer not found");
+           if (customer.RefreshTokenExpiryTime < DateTime.UtcNow)
+            {
+                throw new ApplicationException("the refresh token has expired");
+            }
+            string accessToken = GenerateJwt(customer);
+            customer.RefreshToken = GetRefreshtoken();
+            customer.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            await _context.SaveChangesAsync();
+            return new LogInDto() {AccessToken = accessToken, RefreshToken = customer.RefreshToken};
+        }
     }
 }

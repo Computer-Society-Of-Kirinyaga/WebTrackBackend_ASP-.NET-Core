@@ -63,6 +63,14 @@ Content-Type: application/json
 
 
 ###
+POST {{api}}/api/auth/refresh
+Content-Type: application/json
+
+{
+   "token": "TUn+dkswLrGuaXLiSv/UN+mUmni4ZWGO9VWTDo8Jw8g="
+}
+
+###
 PUT {{api}}/api/products/1
 Content-Type: application/json
 
