@@ -27,7 +27,7 @@ public class CustomerController : ControllerBase
     public IActionResult CreateCustomer(CustomerDto customer)
     {
         var createdCustomer = _customerService.CreateCustomer(customer);
-        return CreatedAtAction(nameof(GetCustomerById), new { id = createdCustomer.Id }, createdCustomer);
+        return CreatedAtAction(nameof(GetCustomerById), new { name = createdCustomer.Name }, createdCustomer);
     }
 
     [HttpPut("{id}")]

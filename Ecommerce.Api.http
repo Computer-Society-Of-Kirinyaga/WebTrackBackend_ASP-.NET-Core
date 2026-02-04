@@ -6,7 +6,7 @@ GET {{api}}/api/customer
 GET {{api}}/api/customers/1
 
 ###
-POST {{api}}/api/customers
+POST {{api}}/api/customer
 Content-Type: application/json
 
 {}
@@ -18,7 +18,17 @@ Content-Type: application/json
 {}
 
 ###
-DELETE {{api}}/api/customers/1
+DELETE {{api}}/api/customer/1
+
+
+###
+POST {{api}}/api/customer
+Content-Type: application/json
+
+{
+    "Name" : "john",
+    "Email" : "custjon@gmail.com"
+}
 
 ###
 GET {{api}}/api/product
